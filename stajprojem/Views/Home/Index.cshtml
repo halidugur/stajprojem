@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+    <div class="col">
+        <a href="@Url.Action("Index", "Customers")" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100 bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Müşteriler</h5>
+                    <p class="card-text">Tüm müşteri kayıtlarını görüntüle.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col">
+        <a href="@Url.Action("Index", "Products")" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100 bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Ürünler</h5>
+                    <p class="card-text">Ürün envanterini incele.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col">
+        
+            <div class="card shadow-sm text-center h-100 bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Sorgulama Yap</h5>
+                    <p class="card-text">Yakında Gelecek</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!-- Diğer kartları da aynı şekilde ekleyebilirsin -->
+</div>
