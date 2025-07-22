@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+    <div class="col">
+        <a href="@Url.Action("Index", "Customers")" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100 bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Müşteriler</h5>
+                    <p class="card-text">Tüm müşteri kayıtlarını görüntüle.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col">
+        <a href="@Url.Action("Index", "Products")" class="text-decoration-none">
+            <div class="card shadow-sm text-center h-100 bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Ürünler</h5>
+                    <p class="card-text">Ürün envanterini incele.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col">
+        <!-- Sorgu Paneli Başlangıcı -->
+        <div class="card shadow-sm text-center h-100 bg-light">
+            <div class="card-body">
+                <h5 class="card-title text-primary">Sorgu Paneli</h5>
+                <form method="post" action="@Url.Action("Sorgula", "Home")">
+                    <div class="mb-2">
+                        <input type="text" name="userQuery" class="form-control" placeholder="Doğal dilde sorgu yaz..." required />
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary w-100">Sorgula</button>
+                </form>
+            </div>
+        </div>
+        <!-- Sorgu Paneli Sonu -->
+    </div>
+</div>

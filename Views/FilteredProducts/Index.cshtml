@@ -1,0 +1,86 @@
+﻿@model IEnumerable<stajprojem.Models.Product>
+
+@{
+    ViewData["Title"] = "Ürünler";
+    var selectedCategoryId = "";
+    if (ViewContext.HttpContext.Request.Query.ContainsKey("CategoryId"))
+    {
+        selectedCategoryId = ViewContext.HttpContext.Request.Query["CategoryId"];
+    }
+    var categories = ViewBag.Categories as List<stajprojem.Models.Category>;
+}
+
+<h2>Ürünler</h2>
+
+<!-- Filtreleme Formu -->
+<form method="get" asp-controller="Products" asp-action="Index" class="mb-3">
+    <div class="row g-2 align-items-end">
+        <div class="col-auto">
+            <label for="CategoryId" class="form-label">Kategori:</label>
+        </div>
+        <div class="col-auto">
+
+
+            <select id="CategoryId" name="CategoryId" class="form-select">
+                <option value="">Tümü</option>
+                @if (categories != null)
+                {
+                    foreach (var cat in categories)
+                    {
+                        <option value="@cat.id" selected="@(selectedCategoryId == cat.id.ToString() ? "selected" : null)">
+                            @cat.category_name
+                        </option>
+                    }
+                }
+            </select>
+
+
+
+
+
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Filtrele</button>
+        </div>
+    </div>
+</form>
+
+<!-- Ürünler Tablosu -->
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ürün Adı</th>
+            <th>Kategori</th>
+            <th>Tedarikçi</th>
+            <th>Birim Fiyatı</th>
+            <th>Birim</th>
+            <th>Stok</th>
+            <th>Açıklama</th>
+            <th>Eklenme Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.product_name</td>
+                    <td>@item.category_id</td>
+                    <td>@item.supplier_id</td>
+                    <td>@(item.unit_price.HasValue ? item.unit_price.Value.ToString("N2") : "-")</td>
+                    <td>@item.unit</td>
+                    <td>@item.stock_quantity</td>
+                    <td>@item.description</td>
+                    <td>@(item.created_date.HasValue ? item.created_date.Value.ToShortDateString() : "-")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="9">Kayıt yok.</td></tr>
+        }
+    </tbody>
+</table>
