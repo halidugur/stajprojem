@@ -9,6 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHttpClient<stajprojem.Services.PythonNlpSqlApiService>();
+// Program.cs veya Startup.cs'de (Program.cs için .NET 6 ve üstü)
+builder.Services.AddHttpClient("NlpSqlApi", client =>
+{
+    client.BaseAddress = new Uri("http://127.0.0.1:8000/"); // FastAPI endpoint adresi!
+});
+
 
 
 var app = builder.Build();

@@ -23,14 +23,18 @@
         </a>
     </div>
     <div class="col">
-        
-            <div class="card shadow-sm text-center h-100 bg-success text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Sorgulama Yap</h5>
-                    <p class="card-text">Yakında Gelecek</p>
-                </div>
+        <!-- Sorgu Paneli Başlangıcı -->
+        <div class="card shadow-sm text-center h-100 bg-light">
+            <div class="card-body">
+                <h5 class="card-title text-primary">Sorgu Paneli</h5>
+                <form method="post" action="@Url.Action("Sorgula", "Home")">
+                    <div class="mb-2">
+                        <input type="text" name="userQuery" class="form-control" placeholder="Doğal dilde sorgu yaz..." required />
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary w-100">Sorgula</button>
+                </form>
             </div>
-        </a>
+        </div>
+        <!-- Sorgu Paneli Sonu -->
     </div>
-    <!-- Diğer kartları da aynı şekilde ekleyebilirsin -->
 </div>

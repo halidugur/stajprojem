@@ -1,0 +1,33 @@
+﻿@model stajprojem.Models.SqlResponseViewModel
+
+@{
+    ViewData["Title"] = "Sorgula";
+}
+
+<h2 class="mb-3">Doğal Dilden SQL Sorgula</h2>
+
+<form method="post" class="mb-4">
+    <input type="text" name="userQuery" class="form-control mb-2" placeholder="Bir sorgu yaz..." required />
+    <button type="submit" class="btn btn-primary">Sorgula</button>
+</form>
+
+@if (Model != null)
+{
+    if (Model.success)
+    {
+        <div class="alert alert-success">
+            <strong>Oluşturulan SQL:</strong> <code>@Model.sql</code>
+            <br />
+            <strong>Intent:</strong> @Model.intent <br />
+            <strong>Table:</strong> @Model.table <br />
+            <strong>Confidence:</strong> @Model.confidence <br />
+            <strong>Zaman filtresi var mı?:</strong> @(Model.has_time_filter == true ? "Evet" : "Hayır")
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <strong>Hata:</strong> @Model.error
+        </div>
+    }
+}
