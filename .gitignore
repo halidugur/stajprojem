@@ -1,0 +1,7 @@
+# VS ve build dosyalarýný ignore et
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.vsidx

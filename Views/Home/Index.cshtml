@@ -1,10 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Dashboard";
 }
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/site.css" />
+}
+
 <div class="row row-cols-1 row-cols-md-4 g-4 mt-3">
+
     <div class="col">
         <a href="@Url.Action("Index", "Customers")" class="text-decoration-none">
-            <div class="card shadow-sm text-center h-100 bg-primary text-white">
+            <div class="card text-center h-100 card-indigo">
                 <div class="card-body">
                     <h5 class="card-title">Müşteriler</h5>
                     <p class="card-text">Tüm müşteri kayıtlarını görüntüle.</p>
@@ -12,21 +18,69 @@
             </div>
         </a>
     </div>
-    @* <div class="col">
-        <a href="@Url.Action("Index", "Products")" class="text-decoration-none">
-            <div class="card shadow-sm text-center h-100 bg-success text-white">
+
+    <div class="col">
+        <a href="@Url.Action("Index", "Employees")" class="text-decoration-none">
+            <div class="card text-center h-100 card-purple">
                 <div class="card-body">
-                    <h5 class="card-title">Ürünler</h5>
-                    <p class="card-text">Ürün envanterini incele.</p>
+                    <h5 class="card-title">Çalışanlar</h5>
+                    <p class="card-text">Çalışan bilgilerini görüntüle.</p>
                 </div>
             </div>
         </a>
-    </div> *@
+    </div>
+
     <div class="col">
-        <!-- Sorgu Paneli Başlangıcı -->
-        <div class="card shadow-sm text-center h-100 bg-light">
+        <a href="@Url.Action("Index", "Orders")" class="text-decoration-none">
+            <div class="card text-center h-100 card-lightblue">
+                <div class="card-body">
+                    <h5 class="card-title">Siparişler</h5>
+                    <p class="card-text">Geçmiş sipariş kayıtlarını görüntüle.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- Sarı ve yeşil kartların koyu mor-lacivert alternatifi -->
+
+    <div class="col">
+        <a href="@Url.Action("Index", "FilteredProducts")" class="text-decoration-none">
+            <div class="card text-center h-100 card-purple">
+                <div class="card-body">
+                    <h5 class="card-title">Ürünler</h5>
+                    <p class="card-text">Ürünleri filtrele ve listele.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col">
+        <a href="@Url.Action("Index", "Products")" class="text-decoration-none">
+            <div class="card text-center h-100 card-indigo">
+                <div class="card-body">
+                    <h5 class="card-title">Ürünler</h5>
+                    <p class="card-text">Ürünler listesini görüntüle.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col">
+        <a href="@Url.Action("Index", "Suppliers")" class="text-decoration-none">
+            <div class="card text-center h-100 card-lightblue">
+                <div class="card-body">
+                    <h5 class="card-title">Tedarikçiler</h5>
+                    <p class="card-text">Tedarikçi listesini görüntüle.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col">
+        <!-- Sorgu Paneli -->
+        <div class="card text-center h-100 card-query">
             <div class="card-body">
-                <h5 class="card-title text-primary">Sorgu Paneli</h5>
+                <h5 class="card-title">Sorgu Paneli</h5>
                 <form method="post" action="@Url.Action("Sorgula", "Home")">
                     <div class="mb-2">
                         <input type="text" name="userQuery" class="form-control" placeholder="Doğal dilde sorgu yaz..." required />
@@ -35,6 +89,6 @@
                 </form>
             </div>
         </div>
-        <!-- Sorgu Paneli Sonu -->
     </div>
+
 </div>
